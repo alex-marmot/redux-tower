@@ -22,10 +22,17 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [{
+    loaders: [
+      {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
-    }]
+      },
+      {
+        test: /\.css$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'style-loader!css-loader'
+      }
+    ]
   }
 };

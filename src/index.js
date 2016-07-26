@@ -1,5 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from './App';
+import Main from './components/Main';
 
-render(<App />, document.getElementById('root'));
+import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+
+import Courses from './components/Courses';
+import ShowCourse from './components/ShowCourse';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+import css from './styles/style.css';
+
+const router = (
+  <Router history={browserHistory}>
+    <Route path="/" component={Main}>
+      <IndexRoute component={Courses}></IndexRoute>
+      <Route path="/view/:courseId" component={ShowCourse}></Route>
+    </Route>
+  </Router>
+)
+
+render(router, document.getElementById('root'));
