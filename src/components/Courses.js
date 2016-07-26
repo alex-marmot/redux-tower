@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 
-import courses from '../data/courses';
+// import courses from '../data/courses';
 import Course from './Course';
 
 class Courses extends Component {
@@ -18,7 +18,7 @@ class Courses extends Component {
     };
     return (
       <div style={styles.root}>
-        { courses.map((course, i) =>  <Course key={i} course={course} />)}
+        { this.props.courses.map((course, i) =>  <Course increment={this.props.increment} key={i} course={course} />)}
       </div>
     )
   }
